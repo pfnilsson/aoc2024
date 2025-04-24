@@ -1,9 +1,10 @@
 package day04
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 var letterIndex = map[int]rune{
@@ -86,7 +87,8 @@ func findCandidatesPart1(pt shared.Point) [][]shared.Point {
 		findDiagonalUpLeft(pt, length),
 		findDiagonalUpRight(pt, length),
 		findDiagonalDownLeft(pt, length),
-		findDiagonalDownRight(pt, length)}
+		findDiagonalDownRight(pt, length),
+	}
 }
 
 func findCandidatesPart2(pt shared.Point) []shared.Point {

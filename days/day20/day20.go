@@ -1,9 +1,10 @@
 package day20
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 const minTimeSave = 100

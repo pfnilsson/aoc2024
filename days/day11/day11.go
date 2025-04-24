@@ -1,9 +1,10 @@
 package day11
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 func countDigits(number int) int {
@@ -18,7 +19,7 @@ func countDigits(number int) int {
 func splitNumber(n int, numDigits int) (int, int) {
 	halfLength := numDigits / 2
 	divisor := 1
-	for i := 0; i < halfLength; i++ {
+	for range halfLength {
 		divisor *= 10
 	}
 	firstHalf := n / divisor
@@ -73,7 +74,7 @@ func nextCounts(currCounts map[int]int, cache map[int][]int) map[int]int {
 }
 
 func part1(stoneCounts map[int]int, cache map[int][]int) map[int]int {
-	for i := 0; i < 25; i++ {
+	for range 25 {
 		stoneCounts = nextCounts(stoneCounts, cache)
 	}
 
@@ -87,7 +88,7 @@ func part1(stoneCounts map[int]int, cache map[int][]int) map[int]int {
 }
 
 func part2(stoneCounts map[int]int, cache map[int][]int) {
-	for i := 0; i < 50; i++ {
+	for range 50 {
 		stoneCounts = nextCounts(stoneCounts, cache)
 	}
 
@@ -110,5 +111,4 @@ func Run() {
 
 	stoneCounts = part1(stoneCounts, cache)
 	part2(stoneCounts, cache)
-
 }

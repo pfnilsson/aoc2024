@@ -1,9 +1,10 @@
 package day09
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 const empty = -1
@@ -48,7 +49,7 @@ func unwrapMemory(memory []int) []int {
 			value = empty
 		}
 
-		for j := 0; j < block; j++ {
+		for range block {
 			unwrappedMemory = append(unwrappedMemory, value)
 		}
 	}
@@ -59,11 +60,7 @@ func sortMemory(memory []int) []int {
 	var currPointer int
 	endPointer := len(memory) - 1
 
-	for {
-		if currPointer == endPointer {
-			break
-		}
-
+	for currPointer != endPointer {
 		if memory[currPointer] != empty {
 			currPointer++
 			continue
@@ -107,7 +104,7 @@ func sortFragMemory(programs []program, free []freeMemory) []program {
 	lastProgramID := programs[len(programs)-1].id
 
 	for i := lastProgramID; i >= 0; i-- {
-		for j := 0; j < len(free); j++ {
+		for j := range free {
 			freeBlock := &free[j]
 
 			if freeBlock.start > programs[i].start {
@@ -149,7 +146,7 @@ func part2(memory []int) {
 
 	tot := 0
 	for _, p := range defraggedPrograms {
-		for i := 0; i < p.size; i++ {
+		for i := range p.size {
 			tot += (p.start + i) * p.id
 		}
 	}

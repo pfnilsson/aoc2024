@@ -1,10 +1,11 @@
 package day06
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"sync"
+
+	"aoc2024/shared"
 )
 
 type state struct {
@@ -28,9 +29,8 @@ var directionOrder = map[string]string{
 }
 
 func getRoute(startingPoint shared.Point, grid shared.Grid[rune]) (route *shared.Set[shared.Point], loop bool) {
-
 	currentState := newState(startingPoint, "up")
-	route = shared.NewSet[shared.Point](currentState.position)
+	route = shared.NewSet(currentState.position)
 	seenStates := shared.NewSet[state]()
 	var nextPosition shared.Point
 

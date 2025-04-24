@@ -1,13 +1,14 @@
 package day24
 
 import (
-	"aoc2024/shared"
 	"errors"
 	"fmt"
 	"log"
 	"sort"
 	"strconv"
 	"strings"
+
+	"aoc2024/shared"
 )
 
 type operation string
@@ -35,7 +36,6 @@ func parseState(stateRaw []string) (map[string]int, error) {
 		lineSplit := strings.Split(line, ": ")
 		key, valStr := lineSplit[0], lineSplit[1]
 		val, err := strconv.Atoi(valStr)
-
 		if err != nil {
 			return nil, fmt.Errorf("error parsing state: %w", err)
 		}
@@ -157,7 +157,7 @@ func matchSwaps(zSwaps []instruction, swapCandidates []instruction, instructions
 	for _, zInstr := range zSwaps {
 		num := zInstr.resultKey[1:]
 		for _, instr := range instructions {
-			if !(instr.firstKey[1:] == num && instr.secondKey[1:] == num && instr.operation == xor) {
+			if instr.firstKey[1:] != num || instr.secondKey[1:] != num || instr.operation != xor {
 				continue
 			}
 
@@ -184,8 +184,8 @@ func swapInstructions(instructions map[string]instruction, swaps map[instruction
 	for swap1, swap2 := range swaps {
 		key1, key2 := swap1.resultKey, swap2.resultKey
 
-		instr1, _ := instructions[key1]
-		instr2, _ := instructions[key2]
+		instr1 := instructions[key1]
+		instr2 := instructions[key2]
 
 		instr1.resultKey, instr2.resultKey = instr2.resultKey, instr1.resultKey
 
@@ -307,5 +307,4 @@ func Run() {
 		log.Fatalf("Error: %v", err)
 		return
 	}
-
 }

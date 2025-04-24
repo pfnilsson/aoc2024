@@ -1,12 +1,13 @@
 package day05
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"sort"
 	"strconv"
 	"strings"
+
+	"aoc2024/shared"
 )
 
 type tuple struct {
@@ -48,9 +49,7 @@ func parseInput(rawInput []string) (rules *shared.Set[tuple], pageCollection [][
 			pagesStr := strings.Split(line, ",")
 
 			var pages []string
-			for _, page := range pagesStr {
-				pages = append(pages, page)
-			}
+			pages = append(pages, pagesStr...)
 			pageCollection = append(pageCollection, pages)
 		}
 	}

@@ -1,11 +1,12 @@
 package day03
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"regexp"
 	"strconv"
+
+	"aoc2024/shared"
 )
 
 func strMul(xStr string, yStr string) (int, error) {
@@ -40,6 +41,7 @@ func part1(memory string) error {
 	fmt.Println("Part 1:", tot)
 	return nil
 }
+
 func part2(memory string) error {
 	pattern := `(do|don't|mul)\((\d{1,3})?,?(\d{1,3})?\)`
 	regex := regexp.MustCompile(pattern)

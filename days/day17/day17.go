@@ -1,11 +1,12 @@
 package day17
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"strconv"
 	"strings"
+
+	"aoc2024/shared"
 )
 
 type computer struct {
@@ -17,13 +18,6 @@ type computer struct {
 
 func newComputer(a int, b int, c int) *computer {
 	return &computer{registerA: a, registerB: b, registerC: c, pointer: 0}
-}
-
-func (cpu *computer) reset() {
-	cpu.registerA = 0
-	cpu.registerB = 0
-	cpu.registerC = 0
-	cpu.pointer = 0
 }
 
 func (cpu *computer) run(program []int) ([]int, error) {
@@ -163,12 +157,17 @@ func (cpu *computer) runDisassembledProgram() int {
 	var output int
 
 	err = cpu.bst(4)
+	if err != nil {
+		panic("disassembled program should not error")
+	}
 	cpu.bxl(7)
 	err = cpu.cdv(5)
+	if err != nil {
+		panic("disassembled program should not error")
+	}
 	cpu.bxc()
 	cpu.bxl(4)
 	output, err = cpu.out(5)
-
 	if err != nil {
 		panic("disassembled program should not error")
 	}

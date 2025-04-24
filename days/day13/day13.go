@@ -1,11 +1,12 @@
 package day13
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"regexp"
 	"strconv"
+
+	"aoc2024/shared"
 )
 
 const ConversionError = 10_000_000_000_000

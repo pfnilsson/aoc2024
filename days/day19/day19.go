@@ -1,10 +1,11 @@
 package day19
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"strings"
+
+	"aoc2024/shared"
 )
 
 func parseTowelPatterns(towelPatterns []string) map[rune][]string {
@@ -20,7 +21,6 @@ func parseTowelPatterns(towelPatterns []string) map[rune][]string {
 func parseInput(inputRaw [][]string) (map[rune][]string, []string) {
 	towelMap := parseTowelPatterns(strings.Split(inputRaw[0][0], ", "))
 	return towelMap, inputRaw[1]
-
 }
 
 func checkDesign(design string, towelMap map[rune][]string, cache map[string]bool) bool {

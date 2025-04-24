@@ -1,15 +1,18 @@
 package day14
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"regexp"
 	"strconv"
+
+	"aoc2024/shared"
 )
 
-const roomWidth = 101
-const roomHeight = 103
+const (
+	roomWidth  = 101
+	roomHeight = 103
+)
 
 type roomSize struct {
 	width  int
@@ -74,7 +77,7 @@ func parseRobot(robotStr string) (robot, error) {
 	matches := re.FindStringSubmatch(robotStr)
 	intMatches := make([]int, 4)
 
-	for i := 0; i < 4; i++ {
+	for i := range 4 {
 		intMatch, err := strconv.Atoi(matches[i+1])
 		if err != nil {
 			return robot{}, fmt.Errorf("converting regex match to int: %w", err)
@@ -122,7 +125,7 @@ func part1(robots []robot, rs roomSize) {
 func part2(robots []robot, rs roomSize) {
 	t := 0
 	for {
-		grid := shared.NewEmptyGrid[rune](rs.width, rs.height, '.')
+		grid := shared.NewEmptyGrid(rs.width, rs.height, '.')
 
 		for _, bot := range robots {
 			pos := bot.positionAtTime(t, rs)

@@ -1,9 +1,10 @@
 package day12
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 type direction int
@@ -24,10 +25,6 @@ type edge struct {
 
 func newEdge(x float64, y float64, direction direction, owner shared.Point) edge {
 	return edge{x: x, y: y, direction: direction, owner: owner}
-}
-
-func (e edge) copy() edge {
-	return newEdge(e.x, e.y, e.direction, e.owner)
 }
 
 func (e edge) slide(val float64) edge {
@@ -60,7 +57,7 @@ func findRegions(grid shared.Grid[rune]) []shared.Set[shared.Point] {
 
 	regions := []shared.Set[shared.Point]{*shared.NewSet[shared.Point]()}
 	seen := shared.NewSet[shared.Point]()
-	stack := shared.NewStack[shared.Point](shared.NewPoint(0, 0))
+	stack := shared.NewStack(shared.NewPoint(0, 0))
 	nextCandidates := shared.NewSet[shared.Point]()
 
 	regionIndex := 0

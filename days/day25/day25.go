@@ -1,9 +1,10 @@
 package day25
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 func parseInput(inputRaw [][]string) ([][5]int, [][5]int) {
@@ -38,7 +39,7 @@ func parseInput(inputRaw [][]string) ([][5]int, [][5]int) {
 }
 
 func validCombo(key [5]int, lock [5]int) bool {
-	for i := 0; i < 5; i++ {
+	for i := range 5 {
 		if key[i]+lock[i] > 5 {
 			return false
 		}

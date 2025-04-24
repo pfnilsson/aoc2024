@@ -1,9 +1,10 @@
 package day18
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 func findShortestPath(graph map[shared.Point][]shared.Point, start shared.Point, goal shared.Point) (shared.Set[shared.Point], error) {
@@ -36,7 +37,7 @@ func findShortestPath(graph map[shared.Point][]shared.Point, start shared.Point,
 }
 
 func reconstructPath(parent map[shared.Point]shared.Point, start, end shared.Point) shared.Set[shared.Point] {
-	path := shared.NewSet[shared.Point](start)
+	path := shared.NewSet(start)
 	for current := end; current != start; current = parent[current] {
 		path.Add(current)
 	}
@@ -90,11 +91,9 @@ func part1(path shared.Set[shared.Point]) {
 func part2(
 	lines [][]int,
 	grid shared.Grid[rune],
-	graph map[shared.Point][]shared.Point,
 	start shared.Point, end shared.Point,
 	path shared.Set[shared.Point],
 ) {
-
 	for i := 1024; i < len(lines); i++ {
 		x, y := lines[i][0], lines[i][1]
 		pt := shared.NewPoint(x, y)
@@ -103,7 +102,7 @@ func part2(
 			continue
 		}
 
-		graph = graphFromGrid(grid)
+		graph := graphFromGrid(grid)
 
 		var err error
 		path, err = findShortestPath(graph, start, end)
@@ -123,12 +122,11 @@ func Run() {
 
 	grid, graph, start, end := intialSetup(lines)
 	path, err := findShortestPath(graph, start, end)
-
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 		return
 	}
 
 	part1(path)
-	part2(lines, grid, graph, start, end, path)
+	part2(lines, grid, start, end, path)
 }

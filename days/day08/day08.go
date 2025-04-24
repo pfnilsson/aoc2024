@@ -1,9 +1,10 @@
 package day08
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 type antennaPair struct {
@@ -60,7 +61,7 @@ func getAntennaPairs(antennas map[rune][]shared.Point) []antennaPair {
 	var pairs []antennaPair
 
 	for _, locations := range antennas {
-		for i := 0; i < len(locations); i++ {
+		for i := range locations {
 			for j := i + 1; j < len(locations); j++ {
 				pairs = append(pairs, newAntennaPair(locations[i], locations[j]))
 			}
@@ -122,5 +123,4 @@ func Run() {
 
 	part1(grid, pairs)
 	part2(grid, pairs)
-
 }

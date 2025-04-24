@@ -1,9 +1,10 @@
 package day10
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 const top = 9

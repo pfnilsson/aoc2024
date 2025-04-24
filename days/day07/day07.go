@@ -1,11 +1,12 @@
 package day07
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"strconv"
 	"strings"
+
+	"aoc2024/shared"
 )
 
 type testCase struct {

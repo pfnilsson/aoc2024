@@ -1,10 +1,11 @@
 package day01
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"sort"
+
+	"aoc2024/shared"
 )
 
 func parseLists(rawInput [][]int) ([]int, []int, error) {
@@ -27,7 +28,7 @@ func part1(list1 []int, list2 []int) {
 	sortLists(list1, list2)
 
 	totalDistances := 0
-	for i := 0; i < len(list1); i++ {
+	for i := range list1 {
 		totalDistances += shared.AbsInt(list1[i] - list2[i])
 	}
 
@@ -55,6 +56,10 @@ func Run() {
 		return
 	}
 	list1, list2, err := parseLists(rawInput)
+	if err != nil {
+		log.Fatalf("Error: %v", err)
+		return
+	}
 
 	part1(list1, list2)
 	part2(list1, list2)

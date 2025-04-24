@@ -1,11 +1,12 @@
 package day16
 
 import (
-	"aoc2024/shared"
 	"container/heap"
 	"fmt"
 	"log"
 	"math"
+
+	"aoc2024/shared"
 )
 
 var directionMap = map[direction]int{
@@ -117,7 +118,7 @@ func dijkstra(graph map[node][]edge, start node, goal shared.Point) (int, map[no
 	}
 
 	distances[start] = 0
-	startEntry := shared.NewPriorityQueueEntry[node](start, 0)
+	startEntry := shared.NewPriorityQueueEntry(start, 0)
 	heap.Push(&pq, &startEntry)
 
 	shortestDistance := math.MaxInt
@@ -141,7 +142,7 @@ func dijkstra(graph map[node][]edge, start node, goal shared.Point) (int, map[no
 			if alternative < distances[destination] {
 				distances[destination] = alternative
 				predecessors[destination] = []node{current.Value}
-				newEntry := shared.NewPriorityQueueEntry[node](destination, alternative)
+				newEntry := shared.NewPriorityQueueEntry(destination, alternative)
 				heap.Push(&pq, &newEntry)
 			} else if alternative == distances[destination] {
 				predecessors[destination] = append(predecessors[destination], current.Value)
@@ -228,5 +229,4 @@ func Run() {
 
 	part1(shortestDistance)
 	part2(shortestDistance, predecessors, distances, goal, startNode)
-
 }

@@ -1,10 +1,11 @@
 package day15
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"strings"
+
+	"aoc2024/shared"
 )
 
 var moveMap = map[rune]func(shared.Point) shared.Point{
@@ -252,5 +253,4 @@ func Run() {
 
 	part1(grid.Clone(), pos, moves)
 	part2(wideGrid, wideStartingPos, moves)
-
 }

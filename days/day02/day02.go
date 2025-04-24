@@ -1,9 +1,10 @@
 package day02
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 func sameSign(a int, b int) bool {
@@ -39,13 +40,12 @@ func findRefSign(report []int) int {
 	}
 
 	return refSign1
-
 }
 
 func isSafe(report []int) bool {
 	refSign := findRefSign(report)
 
-	for i := 0; i < len(report)-1; i++ {
+	for i := range len(report) - 1 {
 		if !isValidSequence(report[i], report[i+1], refSign) {
 			return false
 		}
@@ -82,7 +82,6 @@ func isSafeWithDampener(report []int) bool {
 			// if the current element is invalid, proceed to ignore it
 			if i > 0 && isValidSequence(report[i-1], report[i+1], refSign) {
 				continue
-
 			}
 			return false
 		}

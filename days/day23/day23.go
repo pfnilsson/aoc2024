@@ -1,11 +1,12 @@
 package day23
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
 	"sort"
 	"strings"
+
+	"aoc2024/shared"
 )
 
 func parseConnection(connectionRaw string) (string, string) {

@@ -1,9 +1,10 @@
 package day22
 
 import (
-	"aoc2024/shared"
 	"fmt"
 	"log"
+
+	"aoc2024/shared"
 )
 
 func generateNextSecretNumber(num int) int {
@@ -21,7 +22,7 @@ func updatePrices(prices map[string]int, num int) {
 	seen := shared.NewSet[string]()
 	price := getPrice(num)
 	queue := shared.NewFIFOQueue[int](4)
-	for i := 0; i < 2000; i++ {
+	for range 2000 {
 		num = generateNextSecretNumber(num)
 		newPrice := getPrice(num)
 		queue.Enqueue(newPrice - price)
@@ -49,7 +50,7 @@ func findBest(prices map[string]int) int {
 func part1(numbers []int) {
 	tot := 0
 	for _, num := range numbers {
-		for i := 0; i < 2000; i++ {
+		for range 2000 {
 			num = generateNextSecretNumber(num)
 		}
 		tot += num

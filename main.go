@@ -1,6 +1,9 @@
 package main
 
 import (
+	"flag"
+	"fmt"
+
 	"aoc2024/days/day01"
 	"aoc2024/days/day02"
 	"aoc2024/days/day03"
@@ -26,8 +29,6 @@ import (
 	"aoc2024/days/day23"
 	"aoc2024/days/day24"
 	"aoc2024/days/day25"
-	"flag"
-	"fmt"
 )
 
 func main() {
